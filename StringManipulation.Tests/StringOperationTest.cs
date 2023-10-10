@@ -9,7 +9,7 @@ namespace StringManipulation.Tests
 {
     public class StringOperationTest
     {
-        [Fact]
+        [Fact(Skip ="Prueba para el atributo skip para test XUnit")]
         public void ConcatenateStrings()
         {
             // Arrange
