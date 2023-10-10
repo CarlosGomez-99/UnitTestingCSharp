@@ -127,5 +127,28 @@ namespace StringManipulation.Tests
             // Act
             Assert.Throws<ArgumentOutOfRangeException>(() => strOperation.TruncateString("Test Exception", -1));
         }
+
+        [Theory]
+        [InlineData("I", 1)]
+        [InlineData("II", 2)]
+        [InlineData("III", 3)]
+        [InlineData("IV", 4)]
+        [InlineData("V", 5)]
+        [InlineData("VI", 6)]
+        [InlineData("VII", 7)]
+        [InlineData("VIII", 8)]
+        [InlineData("IX", 9)]
+        [InlineData("X", 10)]
+        public void FromRomanToNumber(string romanNumber, int expected)
+        {
+            // Arrange
+            var strOperation = new StringOperations();
+
+            // Act
+            var result = strOperation.FromRomanToNumber(romanNumber);
+
+            // Assert
+            Assert.Equal(expected, result);
+        }
     }
 }
