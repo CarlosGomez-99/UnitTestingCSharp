@@ -50,19 +50,20 @@ namespace StringManipulation.Tests
             Assert.False(result);
         }
 
-        [Fact]
-        public void RemoveWhitespace()
+        [Theory]
+        [InlineData("Hello World", "HelloWorld")]
+        public void RemoveWhitespace(string phrase, string expected)
         {
             // Arrange
             var strOperation = new StringOperations();
 
             // Act
-            var result = strOperation.RemoveWhitespace("Hello World");
+            var result = strOperation.RemoveWhitespace(phrase);
 
             // Assert
             Assert.NotNull(result);
             Assert.NotEmpty(result);
-            Assert.Equal("HelloWorld", result);
+            Assert.Equal(expected, result);
         }
 
         [Fact]
