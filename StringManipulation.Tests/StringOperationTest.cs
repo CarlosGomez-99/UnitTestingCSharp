@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Moq;
+using Microsoft.Extensions.Logging;
 
 namespace StringManipulation.Tests
 {
     public class StringOperationTest
     {
-        [Fact(Skip ="Prueba para el atributo skip para test XUnit")]
+        [Fact(Skip = "Prueba para el atributo skip para test XUnit")]
         public void ConcatenateStrings()
         {
             // Arrange
@@ -150,6 +152,21 @@ namespace StringManipulation.Tests
 
             // Assert
             Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void CountOccurrences()
+        {
+            var mockLogger = new Mock<ILogger<StringOperations>>();
+
+            // Arrange
+            var strOperation = new StringOperations(mockLogger.Object);
+
+            // Act
+            var result = strOperation.CountOccurrences("Carlos Gomez", 'o');
+
+            // Assert
+            Assert.Equal(2, result);
         }
     }
 }
